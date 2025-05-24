@@ -1,0 +1,39 @@
+<h2>Clients</h2>
+<ul>
+  <li *ngFor="let client of clients">
+    <p
+      class="border-[.5px] border-[#ddd] bg-[#dddd] px-5 py-1 flex items-center justify-between rounded-lg gap-2 my-1"
+    >
+      <span class="flex items-center gap-2">
+        <span class="bg-black rounded-full px-2 text-white">{{
+          client.id
+        }}</span>
+        <span class="text-xl">
+          {{ client.name }}
+        </span>
+        <span
+          class="text-xs bg-green-500 text-white rounded-full py-1 px-2 font-light"
+          >{{ client.email }}</span
+        >
+      </span>
+      <span class="flex items-center gap-2">
+        <span
+          class="flex ml-5 items-center gap-4 text-xs text-gray-500 border-[.5px] border-green-500 py-2 px-4 rounded-md min-w-[700px] text-center justify-between"
+        >
+          <span>{{ client.company.name }}</span>
+          |
+          <span>{{ client.address.street }}, {{ client.address.city }}</span>
+          |
+          <span>{{ client.phone }}</span>
+        </span>
+        <button
+          type="button"
+          class="btn primary bg-red-500 rounded-lg px-5 text-white"
+          (click)="deleteClient(client.id)"
+        >
+          Delete
+        </button>
+      </span>
+    </p>
+  </li>
+</ul>
