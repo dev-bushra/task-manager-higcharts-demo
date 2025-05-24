@@ -1,16 +1,5 @@
-// Create Service for API Calls
-// Real companies never write API calls inside components. This ClientService is your API Waiter. Components just give the order; service fetches the data.
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Client } from '../models/client.model';
-
-@Injectable({
-  providedIn: 'root'
-})
-
-export class ClientService {
-  private apiUrl = 'https://jsonplaceholder.typicode.com/users';
+/* 
+ private apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
   constructor(private http: HttpClient) {}
 
@@ -41,4 +30,16 @@ export class ClientService {
     console.log('deleteClient res:', res);
     return res;
   }
+     */
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ClientApiService {
+
+  constructor(private http: HttpClient) { }
+
+  private baseUrl = environment.apiUrl + '/clients';
 }

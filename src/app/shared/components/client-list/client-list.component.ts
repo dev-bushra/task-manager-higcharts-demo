@@ -1,8 +1,6 @@
-// This component is just the UI Manager. It asks the ClientService for data and updates the view.
-
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../../services/client.service';
-import { Client } from '../../models/client.model';
+import { Client } from 'src/app/core/models/client.model';
+import { ClientService } from 'src/app/core/services/client.service';
 
 @Component({
   selector: 'app-client-list',

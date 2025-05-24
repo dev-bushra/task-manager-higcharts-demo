@@ -1,14 +1,14 @@
-<h2>Clients</h2>
+<h2 class="font-semibold font-sans bg-red-500 text-white px-5 py-1 rounded-md">Clients</h2>
 <ul>
   <li *ngFor="let client of clients">
     <p
-      class="border-[.5px] border-[#ddd] bg-[#dddd] px-5 py-1 flex items-center justify-between rounded-lg gap-2 my-1"
+      class="border-[.5px] border-[#ddd] bg-[#dddd] px-5 py-1 flex items-center justify-between rounded-lg gap-2 my-1 max-w-full overflow-auto hover:bg-gray-300 cursor-pointer"
     >
       <span class="flex items-center gap-2">
         <span class="bg-black rounded-full px-2 text-white">{{
           client.id
         }}</span>
-        <span class="text-xl">
+        <span class="">
           {{ client.name }}
         </span>
         <span
@@ -18,7 +18,7 @@
       </span>
       <span class="flex items-center gap-2">
         <span
-          class="flex ml-5 items-center gap-4 text-xs text-gray-500 border-[.5px] border-green-500 py-2 px-4 rounded-md min-w-[700px] text-center justify-between"
+          class="flex ml-5 items-center gap-4 text-xs text-gray-500 border-[.5px] border-green-500 py-2 px-4 rounded-md text-center justify-between"
         >
           <span>{{ client.company.name }}</span>
           |
@@ -28,7 +28,7 @@
         </span>
         <button
           type="button"
-          class="btn primary bg-red-500 rounded-lg px-5 text-white"
+          class="btn primary bg-red-500 rounded-lg px-3 text-white text-sm hover:bg-red-900 cursor-pointer"
           (click)="deleteClient(client.id)"
         >
           Delete
