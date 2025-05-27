@@ -21,11 +21,44 @@ export class TaskChartComponent implements OnInit, OnDestroy {
 
   // chart 1 - line chart
   chartOptions: Highcharts.Options = {
-    chart: { type: 'column' },
-    title: { text: 'Completed vs Incompleted Tasks', align: 'left', style: { color: 'blue' } },
-    subtitle: { text: 'lorem ipusm text ...' },
-    xAxis: { categories: ['Tasks'] },
-    yAxis: { min: 0, title: { text: 'Count' } },
+    chart: {
+      type: 'column',
+      backgroundColor: 'transparent',
+      height: '100%',
+      style: {
+        fontFamily: 'inherit',
+      }
+    },
+    responsive: { // ✅  Resposives
+      rules: [
+        {
+          condition: {
+            maxWidth: 768, // ✅ Mobile devices
+          },
+          chartOptions: {
+            legend: {
+              align: 'center',
+              verticalAlign: 'bottom',
+              layout: 'horizontal',
+            }
+          }
+        }
+      ]
+    },
+    title: { text: '', align: 'center', style: { color: '#2563eb', fontWeight: '500' } },
+    // subtitle: { text: 'lorem ipusm text ...' },
+    // xAxis: { categories: ['Tasks Summary'] },
+    xAxis: { categories: [''] },
+    // yAxis: { min: 0, title: { text: 'Count' } },
+    yAxis: {
+      min: 0,
+      title: {
+        text: '',
+        style: { color: '#555', fontWeight: 'light' }
+      },
+      gridLineColor: '#f4f4f4',
+    },
+    // colors: ['#16a34a', '#dc2626'], // ✅ Tailwind green-600 & red-600
     series: [
       {
         name: 'Completed',
@@ -37,7 +70,21 @@ export class TaskChartComponent implements OnInit, OnDestroy {
         type: 'column',
         data: [0]
       }
-    ]
+    ],
+    plotOptions: { // ✅ Column styling with rounded edges
+      column: {
+        borderRadius: 5,
+        pointPadding: 0.2,
+        groupPadding: 0.1,
+      }
+    },
+    //     tooltip: {
+    //   shared: true,
+    //   backgroundColor: '#f9f9f9',
+    //   borderColor: '#ccc',
+    //   style: { color: '#111' }
+    // },
+    credits: { enabled: false }, // 👈 removes "highcharts.com"
   };
 
   // chart 2 - 3D line Chart
@@ -136,7 +183,7 @@ export class TaskChartComponent implements OnInit, OnDestroy {
 
   constructor(private taskService: TaskService) { }
 
-  // start listen to taskservice
+  // start listen to task service
   ngOnInit() {
     this.taskSub = this.taskService.tasksObservable$.subscribe(tasks => {
       this.updateChartData(tasks);

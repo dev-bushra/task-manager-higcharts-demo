@@ -18,12 +18,10 @@ import { TaskService } from './services/task.service';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { TaskChartComponent } from './components/task-chart/task-chart.component';
-// import { StockChartsComponent } from './components/stock-charts/stock-charts.component';
-import { ClientListComponent } from './components/client-list/client-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, TaskChartComponent, ClientListComponent],  // Declare all components here
+  declarations: [AppComponent, TaskListComponent, TaskChartComponent],  // Declare all components here
   // declarations: [AppComponent, ClientListComponent],  // Declare all components here
   imports: [BrowserModule, FormsModule, HighchartsChartModule, HttpClientModule ],  // Import other modules (e.g. Forms, Http)
   providers: [TaskService],  // Register services (dependency injection)
